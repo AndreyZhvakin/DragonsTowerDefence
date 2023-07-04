@@ -2,25 +2,126 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tower_script : MonoBehaviour
+public class Ballista_script : MonoBehaviour
 {
     public Animator animator;
 
     private List<GameObject> enemys_around = new List<GameObject>();
+    private GameObject aim;
 
+    private bool already_fire = false;
     // Start is called before the first frame update
     void Start()
     {
     }
 
+    void ChooseAim()
+    {
+        // choose enemy from enemys_around for fire
+        aim = enemys_around[0];
+        Debug.Log("Len enemy - " + enemys_around.Count);
+        foreach (GameObject enemy in enemys_around)
+        {
+            
+            Debug.Log("Enemy RestPath - " + enemy.GetComponent<base_behaviour>().RestOfPath + enemy.name);
+            if (aim.GetComponent<base_behaviour>().RestOfPath > enemy.GetComponent<base_behaviour>().RestOfPath)
+            {
+                aim = enemy;
+                
+                
+            }
+        }
+        Debug.Log("Aim - " + aim);
+    }
+
+    void RotateToAim()
+    {
+        Vector3 diration = aim.transform.position - gameObject.transform.position;
+        float angle = Vector3.Angle(diration, transform.up);
+
+
+        if (angle < 22.5)
+        {
+            //up
+            animator.SetInteger("duration",0);
+        }
+        else
+        {
+            if (diration.x > 0)
+            {
+                if (angle <= 22.5 * 3)
+                {
+                    animator.SetInteger("duration", 1);
+                }
+                else if (angle <= 22.5 * 5)
+                {
+                    animator.SetInteger("duration", 2);
+                }
+                else if (angle <= 22.5 * 7)
+                {
+                    animator.SetInteger("duration", 3);
+                }
+                else if (angle <= 22.5 * 8)
+                {
+                    animator.SetInteger("duration", 8);
+                }
+            }
+            else
+            {
+                if (angle <= 22.5 * 3)
+                {
+                    animator.SetInteger("duration", 8);
+                }
+                else if (angle <= 22.5 * 5)
+                {
+                    animator.SetInteger("duration", 7);
+                }
+                else if (angle <= 22.5 * 7)
+                {
+                    animator.SetInteger("duration", 6);
+                }
+                else if (angle <= 22.5 * 8)
+                {
+                    animator.SetInteger("duration", 5);
+                }
+            }
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
-        bool isEmpty = !enemys_around.Any();
-        if (!isEmpty)
+        if (already_fire)
         {
-            // rotate and fire 
+            if (aim != null && enemys_around.Contains(aim))
+            {
+                //if the aim still live and he's around
+                //FIRE!
+            }
+            else
+            {
+                //if the aim has dead or he's not aroud
+                if(enemys_around.Count != 0)
+                {
+                    ChooseAim();
+                    //FIRE!
+                }
+                else
+                {
+                    //stop fire
+                    already_fire = false;
+                }
+            }
         }
+        else if (enemys_around.Count != 0)
+        {
+            //when there are enemys around
+            ChooseAim();
+            //FIRE!
+        }
+
+        if(aim != null)
+            RotateToAim();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -28,16 +129,18 @@ public class Tower_script : MonoBehaviour
         //when a enemy enters
         if (other.tag == "Enemy")
         {
-            enemys_around.Add(other);
+            enemys_around.Add(other.gameObject);
+            Debug.Log("Enemy enters " + other.gameObject.name);
         }
     }
     
     private void OnTriggerExit2D(Collider2D other)
     {
-        //when a enemy enters
+        //when a enemy exits
         if (other.tag == "Enemy")
         {
-            enemys_around.Remove(other);
+            enemys_around.Remove(other.gameObject);
+            Debug.Log("Enemy exits " + other.gameObject.name);
         }
     }
 }
