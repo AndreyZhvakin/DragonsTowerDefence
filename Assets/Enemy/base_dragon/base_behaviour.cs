@@ -18,7 +18,7 @@ public class base_behaviour : MonoBehaviour
 
 
     public float RestOfPath = 0;
-    //private float pathLength;
+    private float pathLength;
 
     Vector3 startPosition;
     Vector3 endPosition;
@@ -65,7 +65,9 @@ public class base_behaviour : MonoBehaviour
         points = PathLink.GetComponent<Path>().Points;
 
         //RestOfPath = PathLink.GetComponent<Path>().Lenght;
-        
+
+        lastWaypointSwitchTime = Time.time;
+
         //move
         planRoute();
         ChooseAnimation();
@@ -83,7 +85,7 @@ public class base_behaviour : MonoBehaviour
 
         RestOfPath -= Time.deltaTime*speed;
 
-        // on pointscurrent_position
+        // on points
         if (gameObject.transform.position.Equals(endPosition))
         { 
             //last point 

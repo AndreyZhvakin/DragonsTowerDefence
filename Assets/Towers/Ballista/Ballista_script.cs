@@ -27,8 +27,7 @@ public class Ballista_script : MonoBehaviour
             if (aim.GetComponent<base_behaviour>().RestOfPath > enemy.GetComponent<base_behaviour>().RestOfPath)
             {
                 aim = enemy;
-                
-                
+
             }
         }
         Debug.Log("Aim - " + aim);
@@ -38,7 +37,8 @@ public class Ballista_script : MonoBehaviour
     {
         Vector3 diration = aim.transform.position - gameObject.transform.position;
         float angle = Vector3.Angle(diration, transform.up);
-
+        Debug.Log("diration" + diration);
+        Debug.Log("angle" + angle);
 
         if (angle < 22.5)
         {
@@ -63,26 +63,26 @@ public class Ballista_script : MonoBehaviour
                 }
                 else if (angle <= 22.5 * 8)
                 {
-                    animator.SetInteger("duration", 8);
+                    animator.SetInteger("duration", 4);
                 }
             }
             else
             {
                 if (angle <= 22.5 * 3)
                 {
-                    animator.SetInteger("duration", 8);
+                    animator.SetInteger("duration", 7);
                 }
                 else if (angle <= 22.5 * 5)
                 {
-                    animator.SetInteger("duration", 7);
+                    animator.SetInteger("duration", 6);
                 }
                 else if (angle <= 22.5 * 7)
                 {
-                    animator.SetInteger("duration", 6);
+                    animator.SetInteger("duration", 5);
                 }
                 else if (angle <= 22.5 * 8)
                 {
-                    animator.SetInteger("duration", 5);
+                    animator.SetInteger("duration", 4);
                 }
             }
         }
@@ -104,7 +104,7 @@ public class Ballista_script : MonoBehaviour
                 if(enemys_around.Count != 0)
                 {
                     ChooseAim();
-                    //FIRE!
+                    //already_fire = true;
                 }
                 else
                 {
@@ -117,7 +117,7 @@ public class Ballista_script : MonoBehaviour
         {
             //when there are enemys around
             ChooseAim();
-            //FIRE!
+            already_fire = true;
         }
 
         if(aim != null)
