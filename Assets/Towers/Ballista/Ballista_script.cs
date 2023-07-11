@@ -10,6 +10,14 @@ public class Ballista_script : MonoBehaviour
     private GameObject aim;
 
     private bool already_fire = false;
+    private float lastFire = 0;
+
+    public GameObject bulletPrefab;
+    public GameObject currentBullet;
+    public float bulletSpeed;
+
+    public float health;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -122,6 +130,21 @@ public class Ballista_script : MonoBehaviour
 
         if(aim != null)
             RotateToAim();
+
+        lastFire += Time.deltaTime;
+        if (already_fire && lastFire >= 1)
+        {
+            Debug.Log("Fire!!!");
+            //spawn bullet
+            currentBullet = Instantiate(bulletPrefab, gameObject.transform.position, Quaternion.identity);
+            //set its diration and speed
+            currentBullet.GetComponent<Bullet>().speed = bulletSpeed;
+
+            Vector3 diration = aim.transform.position;
+            currentBullet.GetComponent<Bullet>().diration = diration;
+
+            lastFire = 0;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -130,7 +153,6 @@ public class Ballista_script : MonoBehaviour
         if (other.tag == "Enemy")
         {
             enemys_around.Add(other.gameObject);
-            Debug.Log("Enemy enters " + other.gameObject.name);
         }
     }
     
@@ -140,7 +162,6 @@ public class Ballista_script : MonoBehaviour
         if (other.tag == "Enemy")
         {
             enemys_around.Remove(other.gameObject);
-            Debug.Log("Enemy exits " + other.gameObject.name);
         }
     }
 }

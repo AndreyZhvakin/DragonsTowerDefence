@@ -20,7 +20,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: b1e95646576e74d42be9997e74396c49, type: 2}
+  m_Motion: {fileID: 7400000, guid: 5f03d12701f6f44e7b178b7828d6c53e, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -71,7 +71,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: e8812b82398ec402a98ab7c8cc4d3c7c, type: 2}
+  m_Motion: {fileID: 7400000, guid: 4800558d91a344dd5862bfb98a80a618, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -133,7 +133,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: base_dragon
+  m_Name: strong_dragon
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: diration
@@ -206,7 +206,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: ae4ee0b02ccb44d5cad07ed8b8b91335, type: 2}
+  m_Motion: {fileID: 7400000, guid: 91f58061a95d24a818981b11781a1eb6, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

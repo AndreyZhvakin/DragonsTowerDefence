@@ -128,12 +128,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4108223155020075411}
   - component: {fileID: 8875446145395164900}
-  - component: {fileID: 4669515254454544238}
   - component: {fileID: 8794738087750031314}
   - component: {fileID: 8558280543454853448}
   - component: {fileID: 4604569511233470778}
+  - component: {fileID: -1010009084973302836}
   m_Layer: 0
-  m_Name: base_dragon
+  m_Name: strong_dragon
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -165,7 +165,7 @@ Animator:
   m_GameObject: {fileID: 7192673912155322177}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ef7978e285a534af99f0bcef7b531b6e, type: 2}
+  m_Controller: {fileID: 9100000, guid: c7f23b5b63eef42a69eef8840000dac4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -176,22 +176,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4669515254454544238
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7192673912155322177}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a845a66d27ca94027985ba520844b6c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 8875446145395164900}
-  speed: 0.5
-  health: 100
-  RestOfPath: 0
 --- !u!212 &8794738087750031314
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -233,7 +217,7 @@ SpriteRenderer:
   m_SortingLayerID: -1157032381
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2089635940, guid: 759d18f417660496fa5f86a643ea8311, type: 3}
+  m_Sprite: {fileID: -469460073, guid: 5c6aa7d8260c44301843502ee1ef2374, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -306,3 +290,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-1010009084973302836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7192673912155322177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a845a66d27ca94027985ba520844b6c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 8875446145395164900}
+  speed: 0.5
+  health: 200
+  RestOfPath: 0

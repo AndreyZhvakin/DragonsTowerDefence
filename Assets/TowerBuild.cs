@@ -30,11 +30,11 @@ public class TowerBuild : MonoBehaviour
 
     public void createTower()
     {
-        if(towerPrefab != null)
+        if(towerPrefab != null && GameObject.Find("Golds").GetComponent<Gold>().count >= 10)
         {
             Vector3 mouse = Input.mousePosition - angle.transform.position;
-            double XTile = Math.Truncate(mouse.x / XtileSize);
-            double YTile = Math.Truncate(mouse.y / YtileSize);
+            double XTile = Math.Truncate(mouse.x / (XtileSize*1.6));
+            double YTile = Math.Truncate(mouse.y / (YtileSize*1.6));
             Debug.Log("XTile - " + XTile);
             Debug.Log("YTile - " + YTile);
 
@@ -47,11 +47,15 @@ public class TowerBuild : MonoBehaviour
 
             Debug.Log("positonTower - " + positonTower);
 
-            positonTower = (positonTower + angle.transform.position);
+            positonTower = positonTower + angle.transform.position;
             positonTower.z = 0;
             Instantiate(towerPrefab, positonTower, Quaternion.identity);
 
+            GameObject.Find("Golds").GetComponent<Gold>().count -= 10;
+
             towerPrefab = null;
+
+
         }
     }
 
