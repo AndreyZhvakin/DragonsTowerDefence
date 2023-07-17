@@ -18,6 +18,8 @@ public class Ballista_script : MonoBehaviour
 
     public float health;
 
+    public int price;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -145,6 +147,7 @@ public class Ballista_script : MonoBehaviour
 
             lastFire = 0;
         }
+        //animator.SetBool("fire", already_fire);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

@@ -17,6 +17,7 @@ public class strong_behaviour : MonoBehaviour
     private GameObject[] points;
 
     public float health;
+    private float maxHealth;
 
 
     public float RestOfPath = 0;
@@ -73,6 +74,8 @@ public class strong_behaviour : MonoBehaviour
         //move
         planRoute();
         ChooseAnimation();
+
+        maxHealth = health;
     }
 
     // Update is called once per frame
@@ -82,6 +85,8 @@ public class strong_behaviour : MonoBehaviour
         {
             Destroy(gameObject);
             GameObject.Find("Golds").GetComponent<Gold>().count += 3;
+            GameObject.Find("Scope").GetComponent<scope>().count += maxHealth/10;
+            Debug.Log("+scope - " + maxHealth/10);
         }
         //move
         Vector3 last_position = gameObject.transform.position;

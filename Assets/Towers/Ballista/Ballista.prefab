@@ -159,3 +159,5 @@ MonoBehaviour:
   bulletPrefab: {fileID: 8688430240395561115, guid: efa87ee1f7ce44bc8a924c2dae007ba3, type: 3}
   currentBullet: {fileID: 0}
   bulletSpeed: 2
+  health: 0
+  price: 10

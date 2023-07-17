@@ -303,6 +303,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 8875446145395164900}
-  speed: 0.5
+  speed: 0.75
   health: 200
   RestOfPath: 0

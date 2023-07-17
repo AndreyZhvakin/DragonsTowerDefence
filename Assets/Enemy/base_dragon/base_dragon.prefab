@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 8875446145395164900}
-  speed: 0.5
+  speed: 0.75
   health: 100
   RestOfPath: 0
 --- !u!212 &8794738087750031314
@@ -233,7 +233,7 @@ SpriteRenderer:
   m_SortingLayerID: -1157032381
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2089635940, guid: 759d18f417660496fa5f86a643ea8311, type: 3}
+  m_Sprite: {fileID: -808939934, guid: b8a6329a123c54183aec584c4291dfed, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

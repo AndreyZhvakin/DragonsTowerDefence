@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
@@ -16,5 +17,11 @@ public class Health : MonoBehaviour
     void Update()
     {
         animator.SetInteger("Health", health);
+        if(health <= 0)
+        {
+            if (GameObject.Find("Scope").GetComponent<scope>().count > PlayerPrefs.GetFloat("scope",0))
+            PlayerPrefs.SetFloat("scope", GameObject.Find("Scope").GetComponent<scope>().count); 
+            SceneManager.LoadScene(4);
+        }
     }
 }

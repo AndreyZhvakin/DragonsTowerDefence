@@ -17,7 +17,7 @@ public class base_behaviour : MonoBehaviour
     private GameObject[] points;
 
     public float health;
-
+    private float maxHealth;
 
     public float RestOfPath = 0;
     private float pathLength;
@@ -73,6 +73,8 @@ public class base_behaviour : MonoBehaviour
         //move
         planRoute();
         ChooseAnimation();
+
+        maxHealth = health;
     }
 
     // Update is called once per frame
@@ -81,7 +83,9 @@ public class base_behaviour : MonoBehaviour
         if(health <= 0)
         {
             Destroy(gameObject);
-            GameObject.Find("Golds").GetComponent<Gold>().count += 3;
+            GameObject.Find("Golds").GetComponent<Gold>().count += 2;
+            GameObject.Find("Scope").GetComponent<scope>().count += maxHealth / 25;
+            Debug.Log("+scope - " + maxHealth / 25);
         }
         //move
         Vector3 last_position = gameObject.transform.position;
